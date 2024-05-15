@@ -17,7 +17,9 @@ public class ArtistService {
     }
 
     public List<ArtistDTO> findAllArtists() {
-        return artistRepository.findAll().stream()
+        List<Artist> artists = artistRepository.findTopArtistsByLikeCountJPQL();
+
+        return artists.stream()
                 .map(artist -> new ArtistDTO(artist.getId(), artist.getName()))
                 .collect(Collectors.toList());
     }
