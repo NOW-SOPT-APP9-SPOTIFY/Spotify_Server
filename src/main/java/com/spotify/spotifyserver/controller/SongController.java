@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/v1/api")
+@RequiredArgsConstructor
 public class SongController {
 
     private final SongService songService;
@@ -20,10 +21,6 @@ public class SongController {
     @GetMapping("/songs/popular")
     public SpotifyResponse<SongsGetResponse> getPopularSongs() {
         return SpotifyResponse.success(SuccessCode.GET_SUCCESS, songService.getPopularSongs());
-    }
-
-    public SongController(SongService songService) {
-        this.songService = songService;
     }
 
     @GetMapping("/artists/{artistId}/songs/popular")

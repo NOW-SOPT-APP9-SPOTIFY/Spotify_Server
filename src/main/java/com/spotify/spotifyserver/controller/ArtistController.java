@@ -5,6 +5,7 @@ import com.spotify.spotifyserver.common.SuccessCode;
 import com.spotify.spotifyserver.dto.ArtistDTO;
 import com.spotify.spotifyserver.entity.Artist;
 import com.spotify.spotifyserver.service.ArtistService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.spotify.spotifyserver.dto.ArtistGetResponse;
 import org.springframework.http.ResponseEntity;
@@ -14,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/api")
+@RequiredArgsConstructor
 public class ArtistController {
-    @Autowired
-    private ArtistService artistService;
+
+    private final ArtistService artistService;
 
     @GetMapping("/artists/popular")
     public SpotifyResponse<List<ArtistDTO>> getPopularArtists() {
-        List<ArtistDTO> artists = artistService.findAllArtists();
+        List<ArtistDTO> artists = artistService.findTopArtists();
         return SpotifyResponse.success(SuccessCode.GET_SUCCESS, artists);
     }
   

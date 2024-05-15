@@ -19,7 +19,7 @@ public class ArtistService {
         this.artistRepository = artistRepository;
     }
 
-    public List<ArtistDTO> findAllArtists() {
+    public List<ArtistDTO> findTopArtists() {
         List<Artist> artists = artistRepository.findTopArtistsByLikeCountJPQL();
 
         return artists.stream()
