@@ -11,7 +11,6 @@ public interface ArtistRepository extends JpaRepository<Artist, Long> {
     @Query("SELECT a FROM Artist a ORDER BY a.likeCount DESC")
     List<Artist> findTopArtistsByLikeCountJPQL();
 
-    // 아티스트 ID로 아티스트 조회
-    Optional<Artist> findById(Long id);
-
+    @Query("SELECT a FROM Artist a JOIN FETCH a.songs WHERE a.id = :artistId")
+    Optional<Artist> findByIdWithArtistJPQL(Long artistId);
 }
