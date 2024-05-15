@@ -9,4 +9,7 @@ import java.util.List;
 public interface SongRepository extends JpaRepository<Song, Long> {
     @Query("SELECT s FROM Song s JOIN FETCH s.artist ORDER BY s.listenedCount DESC")
     List<Song> findAllWithArtistOrderByListenedCountDescJPQL();
+
+    @Query("SELECT s FROM Song s WHERE s.artist.id = :artistId ORDER BY s.listenedCount DESC")
+    List<Song> findSongsByArtistIdOrderedByPopularity(Long artistId);
 }
