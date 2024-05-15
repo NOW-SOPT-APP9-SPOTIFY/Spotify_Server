@@ -2,6 +2,7 @@ package com.spotify.spotifyserver.controller;
 
 import com.spotify.spotifyserver.common.SpotifyResponse;
 import com.spotify.spotifyserver.common.SuccessCode;
+import com.spotify.spotifyserver.dto.ArtistGetResponse;
 import com.spotify.spotifyserver.entity.Artist;
 import com.spotify.spotifyserver.service.ArtistService;
 import org.springframework.http.ResponseEntity;
@@ -29,14 +30,7 @@ public class ArtistController {
 
     // 특정 아티스트의 정보를 반환하는 API
     @GetMapping("/artists/{artistId}")
-    public ResponseEntity<?> getArtistById(@PathVariable Long artistId) {
-        Optional<Artist> artist = artistService.getArtistById(artistId);
-        if (artist.isPresent()) {
-            return ResponseEntity.ok(SpotifyResponse.success(SuccessCode.GET_SUCCESS, artist.get()));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public SpotifyResponse<ArtistGetResponse> getArtist(@PathVariable final Long artistId) {
+        return SpotifyResponse.success(SuccessCode.GET_SUCCESS, artistService.getArtist(artistId));
     }
-
-
 }
