@@ -1,4 +1,4 @@
-package com.spotify.spotifyserver.controller;
+package com.spotify.spotifyserver.dto;
 
 import java.util.List;
 

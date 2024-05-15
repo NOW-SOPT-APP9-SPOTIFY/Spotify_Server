@@ -1,7 +1,7 @@
 package com.spotify.spotifyserver.service;
 
-import com.spotify.spotifyserver.controller.SongGetResponse;
-import com.spotify.spotifyserver.controller.SongsGetResponse;
+import com.spotify.spotifyserver.dto.SongGetResponse;
+import com.spotify.spotifyserver.dto.SongsGetResponse;
 import com.spotify.spotifyserver.repository.SongRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

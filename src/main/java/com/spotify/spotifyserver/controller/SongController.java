@@ -2,6 +2,7 @@ package com.spotify.spotifyserver.controller;
 
 import com.spotify.spotifyserver.common.SpotifyResponse;
 import com.spotify.spotifyserver.common.SuccessCode;
+import com.spotify.spotifyserver.dto.SongsGetResponse;
 import com.spotify.spotifyserver.service.SongService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
