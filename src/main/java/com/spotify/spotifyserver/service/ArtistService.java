@@ -15,6 +15,6 @@ public class ArtistService {
     }
 
     public List<Artist> findPopularArtists() {
-        return artistRepository.findTopArtistsByLikeCount();
+        return artistRepository.findTopArtistsByLikeCountJPQL();
     }
 }

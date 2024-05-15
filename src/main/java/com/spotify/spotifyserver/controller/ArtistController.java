@@ -21,7 +21,7 @@ public class ArtistController {
 
     @GetMapping("/artists/popular")
     public SpotifyResponse<List<Artist>> getPopularArtists() {
-        List<Artist> popularArtists = artistService.findPopularArtists();
-        return SpotifyResponse.success(SuccessCode.GET_SUCCESS, popularArtists);
+        return SpotifyResponse.success(SuccessCode.GET_SUCCESS, artistService.findPopularArtists());
     }
+
 }

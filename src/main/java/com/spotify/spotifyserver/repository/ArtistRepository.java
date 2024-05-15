@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface ArtistRepository extends JpaRepository<Artist, Long> {
     @Query("SELECT a FROM Artist a ORDER BY a.likeCount DESC")
-    List<Artist> findTopArtistsByLikeCount();
+    List<Artist> findTopArtistsByLikeCountJPQL();
 }
