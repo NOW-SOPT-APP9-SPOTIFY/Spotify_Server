@@ -1,10 +1,12 @@
 package com.spotify.spotifyserver.service;
 
+import com.spotify.spotifyserver.dto.ArtistDTO;
 import com.spotify.spotifyserver.entity.Artist;
 import com.spotify.spotifyserver.repository.ArtistRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ArtistService {
@@ -14,7 +16,9 @@ public class ArtistService {
         this.artistRepository = artistRepository;
     }
 
-    public List<Artist> findPopularArtists() {
-        return artistRepository.findTopArtistsByLikeCountJPQL();
+    public List<ArtistDTO> findAllArtists() {
+        return artistRepository.findAll().stream()
+                .map(artist -> new ArtistDTO(artist.getId(), artist.getName()))
+                .collect(Collectors.toList());
     }
 }
