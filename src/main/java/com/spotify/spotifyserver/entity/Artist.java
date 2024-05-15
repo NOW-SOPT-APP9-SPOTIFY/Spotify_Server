@@ -19,4 +19,5 @@ public class Artist {
 
     @Column(name = "like_count", nullable = false)
     private int likeCount;
+
 }
